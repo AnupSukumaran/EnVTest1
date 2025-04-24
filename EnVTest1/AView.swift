@@ -8,29 +8,15 @@
 import SwiftUI
 
 struct AView: View {
-    
-    @EnvironmentObject var nav: NavState
-    @Environment(\.dismiss) var dismiss
-    @State var navigateToB: Bool = false
-    
+  @EnvironmentObject var nav: NavState
+
   var body: some View {
     VStack {
-      Text("Counter: \(nav.value)")
       Text("Screen A")
       Button("Go to B") {
-      //  nav.isAtB = true
-          navigateToB = true
+        nav.isAtB = true
       }
-      NavigationLink(destination: BView().environmentObject(nav), isActive: $navigateToB) { EmptyView() }
-    }
-    .onChange(of: nav.dismissToHome) { newValue in
-       
-        print(newValue)
-        if newValue {
-            dismiss()
-            navigateToB = false
-            nav.dismissToHome = false
-        }
+      NavigationLink(destination: BView(), isActive: $nav.isAtB) { EmptyView() }
     }
   }
 }

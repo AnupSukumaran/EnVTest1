@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct EnVTest1App: App {
+    @StateObject private var nav = NavState()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(nav)
         }
     }
 }

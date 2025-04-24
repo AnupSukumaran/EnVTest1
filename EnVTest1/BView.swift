@@ -8,21 +8,15 @@
 import SwiftUI
 
 struct BView: View {
-    
-    @EnvironmentObject var nav: NavState
-    @State var navigateToC: Bool = false
-    
+  @EnvironmentObject var nav: NavState
+
   var body: some View {
     VStack {
       Text("Screen B")
       Button("Go to C") {
-        //nav.isAtC = true
-          navigateToC = true
-          //nav.dismissToHome = true
-          nav.value += 1
+        nav.isAtC = true
       }
-      NavigationLink(destination: CView().environmentObject(nav), isActive: $navigateToC
-      ) { EmptyView() }
+      NavigationLink(destination: CView(), isActive: $nav.isAtC) { EmptyView() }
     }
   }
 }

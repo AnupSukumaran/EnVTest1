@@ -15,17 +15,17 @@ struct CView: View {
     VStack {
       Text("Screen C")
       Button("Back to A") {
-          nav.dismissToHome = true
+        nav.dismissToHome = true
       }
     }
     // whenever dismissToHome goes true, reset BOTH links:
-//    .onChange(of: nav.dismissToHome) { goHome in
-//      if goHome {
-//        nav.isAtC = false
-//        nav.isAtB = false
-//        nav.dismissToHome = false // reset flag
-//      }
-//    }
+    .onChange(of: nav.dismissToHome) { goHome in
+      if goHome {
+        nav.isAtC = false
+        nav.isAtB = false
+        nav.dismissToHome = false // reset flag
+      }
+    }
   }
 }
 

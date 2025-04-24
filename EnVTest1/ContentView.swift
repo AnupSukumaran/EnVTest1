@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var nav = NavState()
+   
+    @EnvironmentObject var nav: NavState
     
     var body: some View {
         NavigationView {
           AView()
-            .environmentObject(nav)
         }
     }
 }
 
 #Preview {
     ContentView()
+        .environmentObject(NavState())
 }
